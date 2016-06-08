@@ -1,0 +1,10 @@
+<h1>Start by loading a file</h1>
+
+<%= form_for @track ,  url: tracks_building_build_path, method: :post  do |f| %>
+
+    <%= f.file_field :track_file %>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

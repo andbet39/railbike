@@ -1,0 +1,2 @@
+module Track::TrackWizardHelper
+end

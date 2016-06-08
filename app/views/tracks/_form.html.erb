@@ -1,0 +1,49 @@
+<%= form_for(track) do |f| %>
+  <% if track.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(track.errors.count, "error") %> prohibited this track from being saved:</h2>
+
+      <ul>
+      <% track.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :elevation %>
+    <%= f.text_field :elevation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :distance %>
+    <%= f.text_field :distance %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start_lat %>
+    <%= f.text_field :start_lat %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start_lng %>
+    <%= f.text_field :start_lng %>
+  </div>
+
+    <%= f.file_field :track_file %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

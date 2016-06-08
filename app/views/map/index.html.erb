@@ -1,0 +1,41 @@
+
+<h1>Map#index</h1>
+<p>Find me in app/views/map/index.html.erb</p>
+
+
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+<script>
+  handler = Gmaps.build('Google');
+  handler.buildMap({
+        provider: {
+          disableDefaultUI: true
+          // pass in other Google Maps API options here
+        },
+        internal: {
+          id: 'map'
+        }
+      },
+      function(){
+        markers = handler.addMarkers(<%=raw @hash.to_json %>);
+
+        var polylines = handler.addPolylines(
+            [
+              [
+                  <% @track.points.each() do |point| %>
+                    {lat: <%=point.latitude %>, lng: <%=point.longitude %>},
+                  <% end %>
+
+              ]
+            ],
+            { strokeColor: '#FF0000'}
+        );
+
+        handler.bounds.extendWith(polylines);
+        handler.fitMapToBounds();
+      }
+  );
+
+</script>

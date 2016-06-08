@@ -1,0 +1,13 @@
+
+<%= form_tag(controller: "mygroup", action: "add_post") do %>
+
+    <div class="field">
+      <%= text_field_tag(:content)  %>
+    </div>
+    <%= hidden_field_tag(:destination_id, @post.destination_id) %>
+    <%= hidden_field_tag(:destination_type, @post.destination_type) %>
+
+    <div class="actions">
+      <%= submit_tag ('Post') %>
+    </div>
+<% end %>

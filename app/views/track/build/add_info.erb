@@ -1,0 +1,38 @@
+<h2>Adding info to track</h2>
+
+<%= form_for @track, url: wizard_path, method: :put do |f| %>
+
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+    </div>
+
+    <div class="field">
+      <%= f.label :elevation %>
+      <%= f.text_field :elevation %>
+    </div>
+
+    <div class="field">
+      <%= f.label :distance %>
+      <%= f.text_field :distance %>
+    </div>
+
+    <div class="field">
+      <%= f.label :start_lat %>
+      <%= f.text_field :start_lat %>
+    </div>
+
+    <div class="field">
+      <%= f.label :start_lng %>
+      <%= f.text_field :start_lng %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

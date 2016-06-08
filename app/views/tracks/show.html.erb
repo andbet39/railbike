@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @track.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @track.description %>
+</p>
+
+<p>
+  <strong>Elevation:</strong>
+  <%= @track.elevation %>
+</p>
+
+<p>
+  <strong>Distance:</strong>
+  <%= @track.distance %>
+</p>
+
+<p>
+  <strong>Start lat:</strong>
+  <%= @track.start_lat %>
+</p>
+
+<p>
+  <strong>Start lng:</strong>
+  <%= @track.start_lng %>
+</p>
+
+<%= link_to 'Edit', edit_track_path(@track) %> |
+<%= link_to 'Back', tracks_path %>

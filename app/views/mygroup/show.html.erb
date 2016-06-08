@@ -1,0 +1,73 @@
+
+<div class="row">
+  <div class="col-sm-12">
+    <div id="map" style='width: 100%; height: 400px;'></div>
+  </div>
+</div>
+
+<h2><%= @group.name %></h2>
+
+<div class="row">
+  <div class="col-md-9">
+    <div class="timeline">
+      <div class="line text-muted"></div>
+      <% @actions.each() do |action| %>
+          <% if action.action_type.timeline_visible_flg %>
+              <%= react_component(action.action_type.react_component ,
+                                  props: {destination: action.destination, user: action.user, current_user:current_user},
+                                  prerender: false) %>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <h3>Group members</h3>
+    <% if !isMember(@group,current_user) %>
+        <%= link_to 'Join' , {:controller => "membership", :action => "join", :group_id => @group.id} %>
+    <% end %>
+    <ul>
+      <% @group.memberships.each() do |member|  %>
+          <li>
+            <%= member.user.email %>
+          </li>
+      <% end %>
+    </ul>
+
+    <h3>Group events</h3>
+    <%= link_to 'New Event',  {:controller => "myevents", :action => "new", :group_id => @group.id} %>
+    <ul>
+      <% @group.events.each() do |event|  %>
+          <li>
+            <%= event.name %>
+          </li>
+      <% end %>
+    </ul>
+
+    <%= react_component("PostViewClient",
+                        props: {posts: @posts, user: current_user, group: @group},
+                        prerender: false) %>
+
+  </div>
+</div>
+
+
+<script>
+  handler = Gmaps.build('Google');
+  handler.buildMap({
+        provider: {
+          disableDefaultUI: false
+          // pass in other Google Maps API options here
+        },
+        internal: {
+          id: 'map'
+        }
+      },
+      function(){
+        markers = handler.addMarkers(<%=raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+      }
+  );
+
+</script>
