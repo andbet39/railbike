@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   get 'my_track/index', to: 'my_track#index'
   get 'mytrack/findinbound', to:'my_track#findInBound'
+  get 'mytrack/find', to:'my_track#find'
   get 'mytrack/:id', to:'my_track#get'
 
 

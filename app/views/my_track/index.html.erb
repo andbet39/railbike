@@ -1,6 +1,4 @@
-<h1>MyTrack#index</h1>
-<p>Find me in app/views/my_track/index.html.erb</p>
-
+<%= link_to 'New', tracks_building_build_path , class: "btn btn-succes" %>
 <%= react_component('TrackFinder' ,
                     props: {current_user:current_user},
                     prerender: false) %>

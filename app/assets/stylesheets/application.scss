@@ -14,7 +14,10 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "react-input-range";
+
 @import "./mygroup";
+@import "./my_track";
 
 body{
   padding-top: 50px;

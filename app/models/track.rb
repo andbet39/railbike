@@ -12,6 +12,7 @@ class Track < ApplicationRecord
 
   before_create :parse_file
 
+
   def parse_file
     tempfile = self.track_file.queued_for_write[:original]
     gpx_file = GPX::GPXFile.new(:gpx_data => tempfile)
